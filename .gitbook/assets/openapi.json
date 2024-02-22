@@ -1,0 +1,645 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "version": "1.0.0",
+    "title": "mythAPI",
+    "description": "La API para obtener y procesar datos de mythMC."
+  },
+  "servers": [
+    {
+      "url": "https://api.mythmc.ovh/v1/"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BasicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    }
+  },
+  "security": [
+    {
+      "BasicAuth": []
+    }
+  ],
+  "paths": {
+    "/clans": {
+      "get": {
+        "description": "Devuelve una lista con todos los clanes.",
+        "tags": [
+          "clanes"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "description": "El nombre del clan."
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Petición inválida"
+          }
+        }
+      }
+    },
+    "/clans/{nombre}/{consulta}": {
+      "get": {
+        "description": "Consulta un dato específico.",
+        "tags": [
+          "clanes"
+        ],
+        "parameters": [
+          {
+            "name": "nombre",
+            "in": "path",
+            "required": true,
+            "description": "El nombre del clan",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "consulta",
+            "in": "path",
+            "required": true,
+            "description": "El dato a consultar",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "stats",
+                "members",
+                "info"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Petición inválida"
+          },
+          "401": {
+            "description": "Falta la clave"
+          },
+          "404": {
+            "description": "El clan no existe"
+          }
+        }
+      }
+    },
+    "/clans/{nombre}/stats": {
+      "get": {
+        "description": "Consulta las estadísticas de un clan.",
+        "tags": [
+          "clanes"
+        ],
+        "parameters": [
+          {
+            "name": "nombre",
+            "in": "path",
+            "required": true,
+            "description": "El nombre del clan",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "El nombre del clan."
+                    },
+                    "xp": {
+                      "type": "integer",
+                      "description": "La cantidad de experiencia del clan."
+                    },
+                    "totalKills": {
+                      "type": "integer",
+                      "description": "La cantidad de asesinatos del clan."
+                    },
+                    "totalDeaths": {
+                      "type": "integer",
+                      "description": "La cantidad de muertes del clan."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Petición inválida"
+          },
+          "401": {
+            "description": "Falta la clave"
+          },
+          "404": {
+            "description": "El clan no existe"
+          }
+        }
+      }
+    },
+    "/clans/{nombre}/info": {
+      "get": {
+        "description": "Consulta la información de un clan.",
+        "tags": [
+          "clanes"
+        ],
+        "parameters": [
+          {
+            "name": "nombre",
+            "in": "path",
+            "required": true,
+            "description": "El nombre del clan",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "El nombre del clan."
+                    },
+                    "tag": {
+                      "type": "string",
+                      "description": "La etiqueta del clan."
+                    },
+                    "extraFeatures": {
+                      "type": "integer",
+                      "description": "Expansiones adicionales."
+                    },
+                    "established": {
+                      "type": "string",
+                      "description": "La fecha en que se estableció el clan."
+                    },
+                    "establishedBy": {
+                      "type": "string",
+                      "description": "El usuario que estableció el clan."
+                    },
+                    "leader": {
+                      "type": "string",
+                      "description": "El líder actual del clan."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Petición inválida"
+          },
+          "401": {
+            "description": "Falta la clave"
+          },
+          "404": {
+            "description": "El clan no existe"
+          }
+        }
+      }
+    },
+    "/clans/{nombre}/members": {
+      "get": {
+        "description": "Consulta los miembros de un clan.",
+        "tags": [
+          "clanes"
+        ],
+        "parameters": [
+          {
+            "name": "nombre",
+            "in": "path",
+            "required": true,
+            "description": "El nombre del clan",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "clan": {
+                        "type": "string",
+                        "description": "El nombre del clan."
+                      },
+                      "username": {
+                        "type": "string",
+                        "description": "El nombre del usuario."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Petición inválida"
+          },
+          "401": {
+            "description": "Falta la clave"
+          },
+          "404": {
+            "description": "El clan no existe"
+          }
+        }
+      }
+    },
+    "/users/{nombre}/{consulta}": {
+      "get": {
+        "description": "Consulta un dato específico.",
+        "tags": [
+          "usuarios"
+        ],
+        "parameters": [
+          {
+            "name": "nombre",
+            "in": "path",
+            "required": true,
+            "description": "El nombre del clan",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "consulta",
+            "in": "path",
+            "required": true,
+            "description": "El dato a consultar",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "mytharites",
+                "clan",
+                "kills_deaths",
+                "player_info",
+                "referral",
+                "protocol"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Petición inválida"
+          },
+          "401": {
+            "description": "Falta la clave"
+          },
+          "404": {
+            "description": "El usuario no existe"
+          }
+        }
+      }
+    },
+    "/users/{nombre}/mytharites": {
+      "get": {
+        "description": "Consulta la cantidad de mitaritas de un usuario.",
+        "tags": [
+          "usuarios"
+        ],
+        "parameters": [
+          {
+            "name": "nombre",
+            "in": "path",
+            "required": true,
+            "description": "El nombre del usuario",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "username": {
+                      "type": "string",
+                      "description": "El nombre de usuario."
+                    },
+                    "amount": {
+                      "type": "integer",
+                      "description": "La cantidad de mitaritas del usuario."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Petición inválida"
+          },
+          "401": {
+            "description": "Falta la clave"
+          },
+          "404": {
+            "description": "El usuario no existe"
+          }
+        }
+      }
+    },
+    "/users/{nombre}/clan": {
+      "get": {
+        "description": "Consulta el clan de un usuario.",
+        "tags": [
+          "usuarios"
+        ],
+        "parameters": [
+          {
+            "name": "nombre",
+            "in": "path",
+            "required": true,
+            "description": "El nombre del usuario",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "clan": {
+                      "type": "string",
+                      "description": "El nombre del clan."
+                    },
+                    "username": {
+                      "type": "string",
+                      "description": "El nombre de usuario."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Petición inválida"
+          },
+          "401": {
+            "description": "Falta la clave"
+          },
+          "404": {
+            "description": "El usuario no existe"
+          }
+        }
+      }
+    },
+    "/users/{nombre}/kills_deaths": {
+      "get": {
+        "description": "Consulta los asesinatos y las muertes de un usuario.",
+        "tags": [
+          "usuarios"
+        ],
+        "parameters": [
+          {
+            "name": "nombre",
+            "in": "path",
+            "required": true,
+            "description": "El nombre del usuario",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "username": {
+                      "type": "string",
+                      "description": "El nombre de usuario."
+                    },
+                    "kills": {
+                      "type": "integer",
+                      "description": "La cantidad de asesinatos del usuario."
+                    },
+                    "deaths": {
+                      "type": "integer",
+                      "description": "La cantidad de muertes del usuario."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Petición inválida"
+          },
+          "401": {
+            "description": "Falta la clave"
+          },
+          "404": {
+            "description": "El usuario no existe"
+          }
+        }
+      }
+    },
+    "/users/{nombre}/player_info": {
+      "get": {
+        "description": "Consulta la información básica de un usuario.",
+        "tags": [
+          "usuarios"
+        ],
+        "parameters": [
+          {
+            "name": "nombre",
+            "in": "path",
+            "required": true,
+            "description": "El nombre del usuario",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "username": {
+                      "type": "string",
+                      "description": "El nombre de usuario."
+                    },
+                    "firstJoin": {
+                      "type": "string",
+                      "description": "La fecha en la que entró el usuario por primera vez."
+                    },
+                    "lastJoin": {
+                      "type": "string",
+                      "description": "La fecha en la que entró el usuario por última vez."
+                    },
+                    "playTime": {
+                      "type": "integer",
+                      "description": "El tiempo total de juego del usuario en segundos."
+                    },
+                    "redeemablePlayTime": {
+                      "type": "integer",
+                      "description": "El tiempo de juego del usuario recompensable en segundos."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Petición inválida"
+          },
+          "401": {
+            "description": "Falta la clave"
+          },
+          "404": {
+            "description": "El usuario no existe"
+          }
+        }
+      }
+    },
+    "/users/{nombre}/referral": {
+      "get": {
+        "description": "Consulta el anfitrión de un usuario.",
+        "tags": [
+          "usuarios"
+        ],
+        "parameters": [
+          {
+            "name": "nombre",
+            "in": "path",
+            "required": true,
+            "description": "El nombre del usuario",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "username": {
+                      "type": "string",
+                      "description": "El nombre de usuario."
+                    },
+                    "referral": {
+                      "type": "string",
+                      "description": "El anfitrión del usuario."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Petición inválida"
+          },
+          "401": {
+            "description": "Falta la clave"
+          },
+          "404": {
+            "description": "El usuario no existe"
+          }
+        }
+      }
+    },
+    "/users/{nombre}/protocol": {
+      "get": {
+        "description": "Consulta el último protocolo utilizado por un usuario.",
+        "tags": [
+          "usuarios"
+        ],
+        "parameters": [
+          {
+            "name": "nombre",
+            "in": "path",
+            "required": true,
+            "description": "El nombre del usuario",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "username": {
+                      "type": "string",
+                      "description": "El nombre de usuario."
+                    },
+                    "protocol": {
+                      "type": "integer",
+                      "description": "El último protocolo con el que ingresó el usuario al servidor."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Petición inválida"
+          },
+          "401": {
+            "description": "Falta la clave"
+          },
+          "404": {
+            "description": "El usuario no existe"
+          }
+        }
+      }
+    }
+  }
+}
