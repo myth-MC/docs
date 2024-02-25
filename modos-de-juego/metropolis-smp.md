@@ -29,3 +29,11 @@ Las metrópolis **aliadas** pueden **rescatar** la ciudad en quiebra pagando el 
 ## Prestigio
 
 El prestigio es la reputación de un jugador. Al asesinar a otro jugador obtienes prestigio, y al morir pierdes.
+
+## Notas
+
+* La zona pregenerada tiene un diámetro de 15000 bloques.
+* La barrera del mundo tiene un diámetro de 20000 bloques. Se expande 1000x1000 bloques cada mes, coincidiendo con la actualización mensual.
+* El RandomTP tiene un diámetro de 5000 bloques.
+* Al empezar comienzas con 100 esmeraldas, que son la moneda del servidor. En cada chunk puedes encontrar una media de 120 esmeraldas (de Y-16 a Y480).
+* Durante la primera hora del juego el PVP está desactivado. Puedes renunciar a esta protección con el comando.
