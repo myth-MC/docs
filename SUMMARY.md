@@ -5,9 +5,8 @@
 ## 🎮 Modos de juego
 
 * [🏛️ Metrópolis (SMP)](modos-de-juego/metropolis-smp.md)
-* [🏝️ SkyBlock](modos-de-juego/skyblock.md)
+* [⚔️ Brawl](modos-de-juego/brawl.md)
 * [🗼 The Towers](modos-de-juego/the-towers.md)
-* [🛏️ BedWars](modos-de-juego/bedwars.md)
 * [🧱 MiniWalls](modos-de-juego/miniwalls.md)
 * [🕹️ Arcade](modos-de-juego/arcade/README.md)
   * [❔ Hide and Seek](modos-de-juego/arcade/hide-and-seek.md)
