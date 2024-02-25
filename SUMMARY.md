@@ -4,12 +4,12 @@
 
 ## 🎮 Modos de juego
 
-* [🌴 Survival](modos-de-juego/survival.md)
-* [🏝 SkyBlock](modos-de-juego/skyblock.md)
+* [🏛️ Metrópolis (SMP)](modos-de-juego/metropolis-smp.md)
+* [🏝️ SkyBlock](modos-de-juego/skyblock.md)
 * [🗼 The Towers](modos-de-juego/the-towers.md)
-* [🛏 BedWars](modos-de-juego/bedwars.md)
+* [🛏️ BedWars](modos-de-juego/bedwars.md)
 * [🧱 MiniWalls](modos-de-juego/miniwalls.md)
-* [🕹 Arcade](modos-de-juego/arcade/README.md)
+* [🕹️ Arcade](modos-de-juego/arcade/README.md)
   * [❔ Hide and Seek](modos-de-juego/arcade/hide-and-seek.md)
   * [🔫 Quake](modos-de-juego/arcade/quake.md)
 
@@ -28,6 +28,6 @@
 
 * [myth+](suscripciones/myth+.md)
 
-## 🛠 Experimentos
+## 🛠️ Experimentos
 
 * [Información](experimentos/informacion.md)

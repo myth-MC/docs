@@ -2,7 +2,7 @@
 
 Bienvenido/a a la guía de mythMC. Aquí encontrarás recursos de todo tipo, desde lo más básico hasta lo más avanzado, que te serán útiles a lo largo de tu aventura. A continuación tienes algunos enlaces que te podrían resultar interesantes:
 
-* [survival.md](modos-de-juego/survival.md "mention")
+* [metropolis-smp.md](modos-de-juego/metropolis-smp.md "mention")
 * [Broken link](broken-reference "mention")
 * [Broken link](broken-reference "mention")
 * [Broken link](broken-reference "mention")
